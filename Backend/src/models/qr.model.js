@@ -5,6 +5,9 @@ const qrSchema = new Schema({
         type:Schema.Types.ObjectId,
         ref:"User",
         required:true
+    },
+    messqr:{
+        type:String
     }
 },{timestamps:true})
 
