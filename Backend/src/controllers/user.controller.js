@@ -1,14 +1,22 @@
 import ApiError from "../utils/ApiError.utils";
-import asyncHandler from "../utils/asyncHandler";
-import User from "../models/user.model"
-import ApiResponse from "../utils/ApiResponse.utils";
+import asyncHandler from "../utils/asyncHandler.js";
+import {User} from "../models/user.model.js"
+import ApiResponse from "../utils/ApiResponse.utils.js";
 
 const generateAccessTokenPlease=asyncHandler(async(userId)=>{
     const user =await  User.findById(userId)
     const accessToken = await user.generateAccessToken();
-    
+    user.refreshToken= accessToken
+    await user.save({validBeforeSave:false})
     return {accessToken}
 })
+
+const options = {
+    httpOnly: true,
+    secure:process.env.NODE_ENV ==='production',
+    sameSite:"strict"
+}
+
 const registerUser = asyncHandler(async (req,res)=>{
     const {username, email, password} = req.body
     if([username,email,password].some((value)=>(
@@ -52,8 +60,32 @@ const loginUser = asyncHandler(async(req, res)=>{
         throw new ApiError(400,"Email or password is incorrect")
     }
 
-    
+    const {accessToken} = await generateAccessTokenPlease(emailFound._id)
 
-    return res.status(200).json(new ApiResponse(200,emailFound,"Logged In Successfully!!!"))
+    const loggedInUser = await User.findById(emailFound._id).select("-password -refreshToken")
+
+    return res.status(200).cookie("accessToken",accessToken,options).json(new ApiResponse(200,{
+        user: loggedInUser, accessToken
+    },
+    "Logged In Successfully!!!"))
 })
-export{registerUser}
+
+const logoutUser = asyncHandler(async(req, res)=>{
+    await User.findByIdAndUpdate(req.user._id,
+        {
+            $set: {
+                refreshToken: undefined
+            }
+        },
+        {
+            new: true
+        }
+    )
+
+    return res.status(200).clearCookie("accessToken",options)
+           .json(new ApiResponse(200,{},"successfully logged out!!"))
+
+})
+
+
+export{registerUser, loginUser, logoutUser}
