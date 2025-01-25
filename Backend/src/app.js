@@ -15,7 +15,8 @@ app.use(cookieParser())
 
 
 //importing all the routers :
-import useRouter from "./routes/user.routes"
-
-app.use("/api/v1/user",useRouter)
+import userRouter from "./routes/user.routes.js"
+import qrRouter from "./routes/qr.routes.js"
+app.use("/api/v1/user",userRouter)
+app.use("/api/v1/qr",qrRouter)
 export default app
