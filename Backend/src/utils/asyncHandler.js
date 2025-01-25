@@ -1,7 +1,8 @@
-const asyncHandler = async(handleController)=>{
-    return (req,res,next)=>{
-        Promise.resolve(handleController(req,res,next))
-        .catch((err)=> next(err))
-    }
+const asyncHandler = (requestHandler)=>{
+     return   (req,res,next)=>{
+            // this is another fashion to write promise without creating new object of it.
+            Promise.resolve(requestHandler(req,res,next))
+            .catch((error)=>next(error))
+        }
 }
-export default asyncHandler;
+export  {asyncHandler};

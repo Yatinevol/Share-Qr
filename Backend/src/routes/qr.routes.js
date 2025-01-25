@@ -1,5 +1,6 @@
 import {Router} from "express"
 import {getAllQr, uploadQr} from "../controllers/qr.controller.js"
+import {upload} from "../middlewares/multer.middlewares.js"
 const router = Router()
 
 router.route("/").get(getAllQr)

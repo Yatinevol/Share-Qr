@@ -1,8 +1,8 @@
-import asyncHandler from "../utils/asyncHandler.js"
-import ApiError from "../utils/ApiError.utils.js"
+import {asyncHandler} from "../utils/asyncHandler.js"
+import {ApiError} from "../utils/ApiError.utils.js"
 import { Qr } from "../models/qr.model.js"
-import ApiResponse from "../utils/ApiResponse.utils.js"
-import uploadOnCloudinary from "../utils/cloudninary.js"
+import {ApiResponse} from "../utils/ApiResponse.utils.js"
+import {uploadOnCloudinary} from "../utils/cloudninary.js"
 const uploadQr =  asyncHandler(async (req, res)=>{
     
     const senderId = req.user._id
