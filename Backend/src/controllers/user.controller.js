@@ -8,7 +8,7 @@ const generateAccessTokenPlease=asyncHandler(async(userId)=>{
     const accessToken = await user.generateAccessToken();
     user.refreshToken= accessToken
     await user.save({validBeforeSave:false})
-    return {accessToken}
+    return accessToken
 })
 
 const options = {
@@ -19,10 +19,12 @@ const options = {
 
 const registerUser = asyncHandler(async (req,res)=>{
     const {username, email, password} = req.body
-    if([username,email,password].some((value)=>(
-        value.trim()===""
-    ))){
-        throw new ApiError(400,"All fields are required!!")
+
+    if([username, email,password].some((field)=>{
+         field === ""
+    })
+     )   {
+            throw new ApiError(400,"All fields are required!")
     }
 
     const registeredUser = await User.findOne({
@@ -60,7 +62,7 @@ const loginUser = asyncHandler(async(req, res)=>{
         throw new ApiError(400,"Email or password is incorrect")
     }
 
-    const {accessToken} = await generateAccessTokenPlease(emailFound._id)
+    const accessToken =  generateAccessTokenPlease(emailFound._id)
 
     const loggedInUser = await User.findById(emailFound._id).select("-password -refreshToken")
 
