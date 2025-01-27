@@ -3,13 +3,14 @@ import {asyncHandler} from "../utils/asyncHandler.js";
 import {User} from "../models/user.model.js"
 import {ApiResponse} from "../utils/ApiResponse.utils.js";
 
-const generateAccessTokenPlease=asyncHandler(async(userId)=>{
+const generateAccessTokenPlease=async(userId)=>{
     const user =await  User.findById(userId)
     const accessToken = await user.generateAccessToken();
+    console.log("accessToken",accessToken);
     user.refreshToken= accessToken
     await user.save({validBeforeSave:false})
-    return accessToken
-})
+    return {accessToken}
+}
 
 const options = {
     httpOnly: true,
@@ -62,8 +63,8 @@ const loginUser = asyncHandler(async(req, res)=>{
         throw new ApiError(400,"Email or password is incorrect")
     }
 
-    const accessToken =  generateAccessTokenPlease(emailFound._id)
-
+    const {accessToken} =await generateAccessTokenPlease(emailFound._id)
+    console.log("accessToken in login:",accessToken);
     const loggedInUser = await User.findById(emailFound._id).select("-password -refreshToken")
 
     return res.status(200).cookie("accessToken",accessToken,options).json(new ApiResponse(200,{

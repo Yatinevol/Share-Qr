@@ -3,10 +3,14 @@ import {ApiError} from "../utils/ApiError.utils.js"
 import { Qr } from "../models/qr.model.js"
 import {ApiResponse} from "../utils/ApiResponse.utils.js"
 import {uploadOnCloudinary} from "../utils/cloudninary.js"
+
 const uploadQr =  asyncHandler(async (req, res)=>{
     
     const senderId = req.user._id
-    const messqrFilePath = req.file?.messqr
+    // console.log(req.file);
+    // console.log(req.file?.path);
+    const messqrFilePath = req.file?.path
+    // console.log("path found: ", messqrFilePath);
     if(!messqrFilePath){
         throw new ApiError(400,"Mess Qr is required")
     }
@@ -27,8 +31,8 @@ const uploadQr =  asyncHandler(async (req, res)=>{
 const getAllQr = asyncHandler(async(req,res)=>{
     const {page=1, limit=10} = req.query
 
-    const pageNum = parse(page,10)
-    const limitNum = parse(limit,10)
+    const pageNum = JSON.parse(page,10)
+    const limitNum = JSON.parse(limit,10)
     const skipAmt = (pageNum - 1) * limitNum
 
     try {
