@@ -1,13 +1,13 @@
 import axios from "axios";
 import base_url  from "./conf.js";
 
-const registerUser = async(userData)=>{
-    const response = await axios.post(`${base_url}/user/register`,userData)
+const registerUser = async({email,username,password})=>{
+    const response = await axios.post(`${base_url}/user/register`,{email,username,password})
     return response.data
 }
 
-const loginUser = async(userData)=>{
-    const response = await axios.post(`${base_url}/user/login`,userData)
+const loginUser = async({email, password})=>{
+    const response = await axios.post(`${base_url}/user/login`,{email,password})
     return response.data
 }
 
