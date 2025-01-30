@@ -11,4 +11,9 @@ const loginUser = async({email, password})=>{
     return response.data
 }
 
-export {registerUser, loginUser}
+const getCurrentUser = async()=>{
+    const response  = await axios.get(`${base_url}/user/me`)
+    return response.data
+}
+
+export {registerUser, loginUser, getCurrentUser}
