@@ -11,9 +11,13 @@ const loginUser = async({email, password})=>{
     return response.data
 }
 
+const logoutUser = async()=>{
+     await axios.post(`${base_url}/user/logout`)
+    return null
+}
 const getCurrentUser = async()=>{
     const response  = await axios.get(`${base_url}/user/me`)
     return response.data
 }
 
-export {registerUser, loginUser, getCurrentUser}
+export {registerUser, loginUser, getCurrentUser, logoutUser}
