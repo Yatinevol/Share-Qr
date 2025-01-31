@@ -16,7 +16,12 @@ const logoutUser = async()=>{
     return null
 }
 const getCurrentUser = async()=>{
-    const response  = await axios.get(`${base_url}/user/me`)
+    const token = localStorage.getItem("token");
+    const response  = await axios.get(`${base_url}/user/me`,{
+        headers : {
+            Authorization : `Bearer ${token}`
+        }
+    })
     return response.data
 }
 
