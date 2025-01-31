@@ -3,6 +3,8 @@ import './App.css'
 import {useDispatch} from "react-redux"
 import {getCurrentUser } from './services/auth.js'
 import { login, logout } from './features/authSlice.js'
+import Header from './components/Header/Header.jsx'
+import Footer from './components/Footer/Footer.jsx'
 function App() {
   const [loading, setLoading] = useState(true)
 
@@ -25,7 +27,7 @@ function App() {
       <div className='w-full block'>
         <Header />
         <main>
-        {/* TODO:  <Outlet /> */}
+       {/* <Outlet /> */}
         </main>
         <Footer />
       </div>
