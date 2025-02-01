@@ -1,22 +1,40 @@
 import { Upload, Zap, Share2, Palette } from "lucide-react"
 import { Button } from "./index.js"
-
+import { uploadUserFile } from "../services/qr.js"
+import { useNavigate } from "react-router-dom"
+import React,{useState} from "react"
 export default function Home() {
-  const handleUpload = () => {
-    // Implement your upload logic here
-    console.log("Upload button clicked")
+    const [file, setFile] = useState(null)
+    const navigate = useNavigate()
+  const handleUpload =async () => {
+    if(!file) return
+    const formData = new FormData()
+    formData.append("messqr",file)
+    try {
+        uploadUserFile(formData)
+        navigate("/home")
+    } catch (error) {
+        console.log(error);
+    }
   }
-
+  const handleFileChange =(e)=>{
+    setFile(e.target.files[0])
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
       <main className="container mx-auto px-4 py-12">
         <section className="text-center mb-16">
           <h1 className="text-5xl font-extrabold mb-4">QR Spark</h1>
           <p className="text-xl mb-8">Instant QR codes for the digital age</p>
+          <input 
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="mb-4" />
           <Button
             size="lg"
             onClick={handleUpload}
-            className="bg-blue-500 hover:bg-blue-600 text-white text-lg px-8 py-4 rounded-md shadow-lg hover:shadow-xl transition duration-300"
+            className="bg-blue-500 hover:bg-blue-600 text-white text-lg px-8 py-4 rounded-md shadow-lg hover:shadow-xl transition duration-300 cursor-pointer"
           >
             <Upload className="mr-2 h-6 w-6 inline-block" />
             Upload your Qr
