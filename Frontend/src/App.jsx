@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer.jsx'
 import {  Routes,Route } from 'react-router-dom'
 import Login from './components/Login.jsx'
 import SignUp from './components/SignUp.jsx'
+import Home from './components/Home.jsx'
 function App() {
   const [loading, setLoading] = useState(true)
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" element={<Header />} />
             <Route path="/login" element={<Login />} />
             <Route path='/signup' element={<SignUp/>} />
+            <Route path='/home'   element={<Home/>} />
           </Routes>
         </main>
         {/* <Footer /> */}
