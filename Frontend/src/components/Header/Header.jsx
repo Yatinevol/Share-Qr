@@ -14,7 +14,7 @@ function Header() {
     },
     {
       name : "Qrs",
-      slug : "qr/",
+      slug : "/login",
       active : true
     },
     

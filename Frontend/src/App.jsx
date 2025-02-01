@@ -7,6 +7,7 @@ import Header from './components/Header/Header.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import {  Routes,Route } from 'react-router-dom'
 import Login from './components/Login.jsx'
+import SignUp from './components/SignUp.jsx'
 function App() {
   const [loading, setLoading] = useState(true)
 
@@ -32,6 +33,7 @@ function App() {
           <Routes>  {/* ✅ Only use Routes, since BrowserRouter is in main.jsx */}
             <Route path="/" element={<Header />} />
             <Route path="/login" element={<Login />} />
+            <Route path='/signup' element={<SignUp/>} />
           </Routes>
         </main>
         {/* <Footer /> */}

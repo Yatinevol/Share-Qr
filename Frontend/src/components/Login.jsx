@@ -16,14 +16,14 @@ function Login() {
         setError("")
         try {
             const session = await loginUser(data)
-            console.log("session in Login :",session);
+            // console.log("session in Login :",session);
             if(session.data.accessToken){
                 localStorage.setItem("token",session.data.accessToken)
-                console.log("session token: ",session.data.accessToken);
+                // console.log("session token: ",session.data.accessToken);
             }
             if(session){
                const userData = await getCurrentUser()
-               console.log("userData: ",userData);
+              //  console.log("userData: ",userData);
                if(userData) dispatch(loginAuth({userData}))
                 navigate("/")
             }
