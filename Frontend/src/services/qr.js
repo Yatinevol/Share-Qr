@@ -13,4 +13,14 @@ const uploadUserFile = async(formData)=>{
     
 }
 
-export {uploadUserFile}
+const getAllQrs = async()=>{
+    const token = localStorage.getItem("token");
+    const response = await axios.get(`${base_url}/`,{
+        headers:{
+            "Authorization" : `Bearer ${token}`,
+            
+        }
+    })
+    return response.data
+}
+export {uploadUserFile, getAllQrs }

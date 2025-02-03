@@ -7,11 +7,12 @@ export default function Home() {
     const [file, setFile] = useState(null)
     const navigate = useNavigate()
   const handleUpload =async () => {
+    
     if(!file) return
     const formData = new FormData()
     formData.append("messqr",file)
     try {
-        uploadUserFile(formData)
+      await  uploadUserFile(formData)
         navigate("/home")
     } catch (error) {
         console.log(error);
@@ -30,7 +31,7 @@ export default function Home() {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          className="mb-4" />
+          className="mb-4 border-gray-500 bg-gray-400 w-52 mr-2 p-4 rounded-sm cursor-pointer" />
           <Button
             size="lg"
             onClick={handleUpload}

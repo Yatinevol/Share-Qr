@@ -2,7 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {Container} from '../index.js'
+import {Container, Logo} from '../index.js'
+import {LogoutBtn} from '../index.js'
 function Header() {
   const navigate = useNavigate()
   const authStatus = useSelector((state)=>state.auth.status)
@@ -25,7 +26,7 @@ function Header() {
         <nav>
           {/* <div>
             <Link to="/">
-              <Logo width='70px' />
+              <Logo width='7px' />
             </Link>
           </div> */}
           <ul className='flex'>
@@ -39,11 +40,11 @@ function Header() {
               </li>
             ): null)}
 
-            {/* { authStatus && (
+            { authStatus && (
               <li>
                 <LogoutBtn/>
               </li>
-            )} */}
+            )}
              
           </ul>
         </nav>

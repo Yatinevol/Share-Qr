@@ -34,7 +34,7 @@ const SignUp = async(data)=>{
         <h2 className="text-center text-3xl font-bold mb-2">Sign up to create account</h2>
         <p className="mt-2 text-center text-base text-gray-600">
           Already have an account?&nbsp;
-          <Link href="/login" className="font-medium text-primary hover:text-primary/80">
+          <Link to="/home" className="font-medium text-primary hover:text-primary/80">
             Sign In
           </Link>
         </p>
