@@ -15,10 +15,10 @@ const uploadUserFile = async(formData)=>{
 
 const getAllQrs = async()=>{
     const token = localStorage.getItem("token");
-    const response = await axios.get(`${base_url}/`,{
+    const response = await axios.get(`${base_url}/qr/`,{
         headers:{
             "Authorization" : `Bearer ${token}`,
-            
+
         }
     })
     return response.data

@@ -15,11 +15,12 @@ function Header() {
     },
     {
       name : "Qrs",
-      slug : "/login",
+      slug : "/qr",
       active : true
     },
     
   ]
+  
   return (
     <header>
       <Container>
