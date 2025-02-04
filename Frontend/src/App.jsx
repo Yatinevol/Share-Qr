@@ -5,11 +5,7 @@ import {getCurrentUser } from './services/auth.js'
 import { login, logout } from './features/authSlice.js'
 import Header from './components/Header/Header.jsx'
 import Footer from './components/Footer/Footer.jsx'
-import {  Routes,Route } from 'react-router-dom'
-import Login from './components/Login.jsx'
-import SignUp from './components/SignUp.jsx'
-import Home from './components/Home.jsx'
-import GetQr from './components/GetQr.jsx'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -29,21 +25,14 @@ function App() {
     .finally(()=> setLoading(false))
   },[dispatch])
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
-      <div className="w-full block">
-     
-        <main>
-          <Routes>  {/* ✅ Only use Routes, since BrowserRouter is in main.jsx */}
-            <Route path="/" element={<Header />} />
-            <Route path="/login" element={<Login />} />
-            <Route path='/signup' element={<SignUp/>} />
-            <Route path='/home'   element={<Home/>} />
-            <Route path='/qr'   element={<GetQr/>} />
-            
-          </Routes>
-        </main>
-        {/* <Footer /> */}
-      </div>
+    <div className="min-h-screen flex flex-col" style={{backgroundColor : "oklch(0.26 0.03 256.32)"}}>
+      <Header />  {/* ✅ Header always visible */}
+      
+      <main className="flex-grow">
+        <Outlet />  {/* ✅ The current page content will be rendered here */}
+      </main>
+      
+      <Footer />  {/* ✅ Footer always visible */}
     </div>
   ) : null
 }

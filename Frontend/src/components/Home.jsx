@@ -89,23 +89,6 @@ export default function Home() {
           </Button>
         </section>
       </main>
-
-      <footer className="bg-gray-900 py-8">
-        <div className="container mx-auto px-4 text-center text-gray-400">
-          <p>&copy; 2025 QR Spark. All rights reserved.</p>
-          <div className="mt-4">
-            <a href="#" className="hover:text-white mx-2">
-              About
-            </a>
-            <a href="#" className="hover:text-white mx-2">
-              Privacy
-            </a>
-            <a href="#" className="hover:text-white mx-2">
-              Terms
-            </a>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

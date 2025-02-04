@@ -18,26 +18,26 @@ function Header() {
       slug : "/qr",
       active : true
     },
-    {
-      name : "SignUp",
-      slug : "/signup",
-      active : true
-    },
-    {
-      name : "LogIn",
-      slug : "/login",
-      active : true
-    },
+    // {
+    //   name : "SignUp",
+    //   slug : "/signup",
+    //   active : true
+    // },
+    // {
+    //   name : "LogIn",
+    //   slug : "/login",
+    //   active : true
+    // },
     {
       name : "upload",
-      slug : "/home",
+      slug : "/upload",
       active : true
     }
     
   ]
   
   return (
-<header className="bg-white shadow-md py-4">
+<header className="py-4" style={{backgroundColor : "oklch(0.26 0.03 256.32)"}}>
       <Container>
         <nav className="flex items-center justify-between bg-gray-100 rounded-full px-6 py-2">
           <div className="flex items-center space-x-6">
