@@ -1,9 +1,12 @@
 import React from 'react'
 import img from "../logo.png"
-function Logo() {
+function Logo({
+    className ="",
+    ...props
+}) {
   return (
     <div>
-        <img src={img} alt="" />
+        <img src={img} alt="" className={`${className}`} {...props}/>
     </div>
   )
 }

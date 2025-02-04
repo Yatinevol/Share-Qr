@@ -37,32 +37,40 @@ function Header() {
   ]
   
   return (
-    <header>
+<header className="bg-white shadow-md py-4">
       <Container>
-        <nav>
-          {/* <div>
-            <Link to="/">
-              <Logo width='7px' />
+        <nav className="flex items-center justify-between bg-gray-100 rounded-full px-6 py-2">
+          <div className="flex items-center space-x-6">
+            <Link to="/" className="flex-shrink-0">
+              <Logo className="w-10 h-10" />
             </Link>
-          </div> */}
-          <ul className='flex'>
-            {navItems.map((eachItem)=> eachItem.active ? (
-              <li key={eachItem.name}>
-                <button onClick={()=> navigate(eachItem.slug)}
-                className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
-                >
-                  {eachItem.name}
-                </button>
-              </li>
-            ): null)}
-
-            { authStatus && (
-              <li>
-                <LogoutBtn/>
-              </li>
+            <ul className="flex items-center space-x-2">
+              {navItems.map((eachItem) =>
+                eachItem.active ? (
+                  <li key={eachItem.name}>
+                    <button
+                      onClick={() => navigate(eachItem.slug)}
+                      className="px-4 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-200 rounded-full transition duration-200"
+                    >
+                      {eachItem.name}
+                    </button>
+                  </li>
+                ) : null,
+              )}
+            </ul>
+          </div>
+          <div>
+            {authStatus ? (
+              <LogoutBtn className="px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-200" />
+            ) : (
+              <button
+                onClick={() => navigate("/signup")}
+                className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-200"
+              >
+                Sign Up
+              </button>
             )}
-             
-          </ul>
+          </div>
         </nav>
       </Container>
     </header>
