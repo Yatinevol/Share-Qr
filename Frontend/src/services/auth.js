@@ -12,7 +12,15 @@ const loginUser = async({email, password})=>{
 }
 
 const logoutUser = async()=>{
-     await axios.post(`${base_url}/user/logout`)
+    
+    const token = localStorage.getItem("token")
+
+    await axios.post(`${base_url}/user/logout`,{},{
+        headers : {
+            "Authorization" : `Bearer ${token}`
+        }
+    })
+    localStorage.removeItem("token")
     return null
 }
 const getCurrentUser = async()=>{

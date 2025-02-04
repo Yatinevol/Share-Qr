@@ -32,8 +32,8 @@ function Login() {
         }
     }       
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl w-full bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8" style={{backgroundColor:"oklch(0.26 0.03 256.32)"}}>
+      <div className="max-w-5xl w-full bg-white rounded-xl shadow-lg overflow-hidden" >
         <div className="flex flex-col md:flex-row">
           {/* QR Code Image Section */}
           <div className="md:w-1/2 bg-indigo-600">

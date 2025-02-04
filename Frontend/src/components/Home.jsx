@@ -13,7 +13,7 @@ export default function Home() {
     formData.append("messqr",file)
     try {
       await  uploadUserFile(formData)
-        navigate("/home")
+        navigate("/qr")
     } catch (error) {
         console.log(error);
     }
@@ -26,7 +26,7 @@ export default function Home() {
       <main className="container mx-auto px-4 py-12">
         <section className="text-center mb-16">
           <h1 className="text-5xl font-extrabold mb-4">QR Spark</h1>
-          <p className="text-xl mb-8">Instant QR codes for the digital age</p>
+          <p className="text-xl mb-8">Instant QR codes for the people by the people</p>
           <input 
           type="file"
           accept="image/*"

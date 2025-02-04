@@ -26,13 +26,13 @@ function App() {
   },[dispatch])
   return !loading ? (
     <div className="min-h-screen flex flex-col" style={{backgroundColor : "oklch(0.26 0.03 256.32)"}}>
-      <Header />  {/* ✅ Header always visible */}
+      <Header /> 
       
       <main className="flex-grow">
-        <Outlet />  {/* ✅ The current page content will be rendered here */}
+        <Outlet />  
       </main>
       
-      <Footer />  {/* ✅ Footer always visible */}
+      <Footer /> 
     </div>
   ) : null
 }

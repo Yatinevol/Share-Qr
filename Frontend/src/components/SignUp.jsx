@@ -24,17 +24,17 @@ const SignUp = async(data)=>{
    }
 }
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-xl p-10 shadow-md">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100"style={{backgroundColor:"oklch(0.26 0.03 256.32)"}}>
+      <div className="w-full max-w-md rounded-xl p-10 shadow-md bg-white" >
         <div className="mb-6 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
-            <Logo width="100%" />
+            <Logo width="90%" />
           </span>
         </div>
         <h2 className="text-center text-3xl font-bold mb-2">Sign up to create account</h2>
         <p className="mt-2 text-center text-base text-gray-600">
           Already have an account?&nbsp;
-          <Link to="/home" className="font-medium text-primary hover:text-primary/80">
+          <Link to="/login" className="font-medium text-primary hover:text-primary/80">
             Sign In
           </Link>
         </p>
@@ -45,6 +45,7 @@ const SignUp = async(data)=>{
             <Input
               label="Username: "
               placeholder="Enter your username"
+              className = "outline-blue-300"
               {...register("username", {
                 required: true,
               })}

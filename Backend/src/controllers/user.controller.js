@@ -48,7 +48,7 @@ const registerUser = asyncHandler(async (req,res)=>{
     return res.status(200).json(new ApiResponse(200,user,"User registered Successfully!"))
 })
 
-const loginUser = asyncHandler(async(req, res)=>{
+const loginUser = asyncHandler(async(req, res)=>{   
     const {email, password} = req.body
     if(!email || !password){
         throw new ApiError(400,"All fields are required")
@@ -64,7 +64,7 @@ const loginUser = asyncHandler(async(req, res)=>{
     }
 
     const {accessToken} =await generateAccessTokenPlease(emailFound._id)
-    console.log("accessToken in login:",accessToken);
+   
     const loggedInUser = await User.findById(emailFound._id).select("-password -refreshToken")
 
     return res.status(200).cookie("accessToken",accessToken,options).json(new ApiResponse(200,{
@@ -74,6 +74,7 @@ const loginUser = asyncHandler(async(req, res)=>{
 })
 
 const logoutUser = asyncHandler(async(req, res)=>{
+    
     await User.findByIdAndUpdate(req.user._id,
         {
             $set: {

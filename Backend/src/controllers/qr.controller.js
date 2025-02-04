@@ -7,7 +7,7 @@ import {uploadOnCloudinary} from "../utils/cloudninary.js"
 const uploadQr =  asyncHandler(async (req, res)=>{
     
     const senderId = req.user._id
-    console.log("uploadQr : req.user",req.user);
+    // console.log("uploadQr : req.user",req.user);
     // console.log(req.file);
     // console.log(req.file?.path);
     const messqrFilePath = req.file?.path
