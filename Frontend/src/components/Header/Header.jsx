@@ -18,6 +18,21 @@ function Header() {
       slug : "/qr",
       active : true
     },
+    {
+      name : "SignUp",
+      slug : "/signup",
+      active : true
+    },
+    {
+      name : "LogIn",
+      slug : "/login",
+      active : true
+    },
+    {
+      name : "upload",
+      slug : "/home",
+      active : true
+    }
     
   ]
   
