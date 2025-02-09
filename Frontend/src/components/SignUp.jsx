@@ -7,7 +7,7 @@ import { login as loginAuth } from '../features/authSlice.js'
 import {Input, Logo, Button} from "./index.js"
 function SignUp() {
 const [error, setError] = useState("")
-const dispatch = useDispatch()
+// const dispatch = useDispatch()
 const navigate = useNavigate()
 const {register, handleSubmit} = useForm()
 const SignUp = async(data)=>{
@@ -15,9 +15,9 @@ const SignUp = async(data)=>{
    try {
      const registered = await registerUser(data)
      if(registered){
-         const userData = await getCurrentUser()
-         if(userData) dispatch(loginAuth(userData))
-         navigate("/")
+        //  const userData = await getCurrentUser()
+        //  if(userData) dispatch(loginAuth(userData))
+         navigate("/login")
      }
    } catch (error) {
         setError(error.message)

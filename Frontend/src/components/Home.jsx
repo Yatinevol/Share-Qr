@@ -31,11 +31,11 @@ export default function Home() {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          className="mb-4 border-gray-500 bg-gray-400 w-52 mr-2 p-4 rounded-sm cursor-pointer" />
+          className="mb-4 border-gray-500 bg-gray-400 hover:bg-gray-500 w-52 mr-2 p-4 rounded-sm cursor-pointer" />
           <Button
             size="lg"
             onClick={handleUpload}
-            className="bg-blue-500 hover:bg-blue-600 text-white text-lg px-8 py-4 rounded-md shadow-lg hover:shadow-xl transition duration-300 cursor-pointer"
+            className="bg-blue-400 hover:bg-blue-700 text-white text-lg px-8 py-4 rounded-md shadow-lg hover:shadow-xl transition duration-300 cursor-pointer"
           >
             <Upload className="mr-2 h-6 w-6 inline-block" />
             Upload your Qr
@@ -68,25 +68,10 @@ export default function Home() {
           ))}
         </section>
 
-        <section className="bg-gray-800 p-8 rounded-lg mb-16">
-          <h3 className="text-2xl font-bold mb-4 text-center">Trending QR Codes</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[...Array(4)].map((_, index) => (
-              <div key={index} className="bg-gray-700 h-24 rounded-lg animate-pulse"></div>
-            ))}
-          </div>
-        </section>
-
         <section className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4">Ready to make your mark?</h2>
-          <p className="text-xl mb-8">Create a QR code that stands out. It's quick, easy, and totally free.</p>
-          <Button
-            size="lg"
-            onClick={handleUpload}
-            className="bg-blue-500 hover:bg-blue-600 text-white text-lg px-8 py-4 rounded-md shadow-lg hover:shadow-xl transition duration-300"
-          >
-            Start Creating
-          </Button>
+          <p className="text-xl mb-8">Share a QR code. It's quick, easy, and totally free.</p>
+          
         </section>
       </main>
     </div>

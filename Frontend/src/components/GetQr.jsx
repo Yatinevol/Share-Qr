@@ -55,7 +55,7 @@ function GetQr() {
             <div className="mt-4">
               <button
                 onClick={() => setSelectedImage(qr.messqr)}
-                className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="w-full px-4 py-2 bg-[#00a35c] text-white rounded-md hover:bg-[#29714a] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Select
               </button>

@@ -65,11 +65,17 @@ function Header() {
             ) : (
               <button
                 onClick={() => navigate("/signup")}
-                className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-200"
+                className="px-4 mx-2 py-2 bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200"
               >
                 Sign Up
               </button>
             )}
+            <button
+                onClick={() => navigate("/login")}
+                className="px-4 py-2 bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200"
+              >
+                Login
+              </button>
           </div>
         </nav>
       </Container>
