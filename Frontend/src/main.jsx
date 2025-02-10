@@ -5,18 +5,34 @@ import { RouterProvider, createBrowserRouter,createRoutesFromElements } from 're
 import './index.css'
 import App from './App.jsx'
 import store from './store/store.js'
-import Login from './components/Login.jsx'
-import SignUp from './components/SignUp.jsx'
-import Home from './components/Home.jsx'
-import GetQr from './components/GetQr.jsx'
+import Upload from './pages/Upload.jsx'
+import Login from './pages/Login.jsx'
+import SignUp from './pages/SignUp.jsx'
+import GetQr from './pages/GetQr.jsx'
+import Protected from './components/AuthLayout.jsx'
 import { Route } from 'react-router-dom'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path='/upload' element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/qr" element={<GetQr />} />
+      <Route path='/' element={<Upload />} />
+      <Route path="/login" 
+      element={
+      <Protected authentication={false}> 
+        <Login/>
+      </Protected>
+      } />
+      <Route path="/signup" 
+      element={
+      <Protected authentication={false}>
+        <SignUp />
+      </Protected>
+      } />
+      <Route path="/qr" 
+      element={
+      <Protected authentication>
+        <GetQr/>
+      </Protected>
+      }/>
     </Route>
   )
 );

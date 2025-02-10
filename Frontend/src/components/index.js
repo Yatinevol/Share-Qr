@@ -5,7 +5,7 @@ import Button from "./Button.jsx";
 import Logo from "./Logo.jsx";
 import SignUp from "./SignUp.jsx";
 import GetQr from "./GetQr.jsx";
-import Home from "./Home.jsx";
+import Upload from "./Upload.jsx";
 import Login from "./Login.jsx"
-
-export {Container, LogoutBtn, Input, Button,Logo, SignUp, GetQr, Home, Login}
+import Protected from "./AuthLayout.jsx";
+export {Container, LogoutBtn, Input, Button,Logo, SignUp, GetQr, Upload, Login, Protected}

@@ -30,7 +30,7 @@ function Header() {
     // },
     {
       name : "upload",
-      slug : "/upload",
+      slug : "/",
       active : true
     }
     
@@ -70,12 +70,12 @@ function Header() {
                 Sign Up
               </button>
             )}
-            <button
+            {!authStatus && <button
                 onClick={() => navigate("/login")}
                 className="px-4 py-2 bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200"
               >
                 Login
-              </button>
+              </button>}
           </div>
         </nav>
       </Container>
