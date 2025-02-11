@@ -10,7 +10,7 @@ function Header() {
   const navItems = [
     {
       name : "MyQr",
-      slug : "/signup",
+      slug : "/myqr",
       active : true
     },
     {

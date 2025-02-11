@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp.jsx'
 import GetQr from './pages/GetQr.jsx'
 import Protected from './components/AuthLayout.jsx'
 import { Route } from 'react-router-dom'
+import UserQr from './components/UserQr.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -33,6 +34,13 @@ const router = createBrowserRouter(
         <GetQr/>
       </Protected>
       }/>
+      <Route path="/myqr" 
+      element={
+      <Protected authentication>
+        <UserQr/>
+      </Protected>
+      }/>
+      
     </Route>
   )
 );

@@ -23,4 +23,14 @@ const getAllQrs = async()=>{
     })
     return response.data
 }
-export {uploadUserFile, getAllQrs }
+
+const getUserQr = async()=>{
+    const token = localStorage.getItem("token")
+    const response = await axios.get(`${base_url}/qr/myqr`,{
+        headers:{
+            "Authorization" : `Bearer ${token}`
+        }
+    })
+    return response.data
+}
+export {uploadUserFile, getAllQrs, getUserQr}
