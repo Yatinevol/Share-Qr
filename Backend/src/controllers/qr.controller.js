@@ -55,4 +55,18 @@ const getAllQr = asyncHandler(async(req,res)=>{
             console.log("No qr found",error);
     }
 })
-export {uploadQr, getAllQr}
+
+const getUserQr = asyncHandler(async(req,res)=>{
+    const userId = req.user._id
+
+    const userUploadedQr = await Qr.find({
+        sendBy : userId
+    }).sort({createdAt:-1})
+
+    // if(!userUploadedQr){
+    //     throw new ApiError(400,"no qr uploaded by the user")
+    // }
+
+    return res.status(200).json(new ApiResponse(200,userUploadedQr,"Successfully fetched uploaded Qr!"))
+})
+export {uploadQr, getAllQr, getUserQr}
