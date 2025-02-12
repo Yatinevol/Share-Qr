@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getUserQr } from '../services/qr'
-
+import { deleteUserQr, getUserQr } from '../services/qr'
 function UserQr() {
     const [qrCodes, setQrCodes] = useState([])   
     const [selectedImage, setSelectedImage] = useState(null)
@@ -14,6 +13,11 @@ function UserQr() {
         } catch (error) {
             console.log(error);
         }
+    }
+    const deleteQr = async(file)=>{
+       await deleteUserQr(file)
+       await fetchUserQr()
+      
     }
     useEffect(()=>{
         fetchUserQr()
@@ -45,9 +49,15 @@ function UserQr() {
             <div className="mt-4">
               <button
                 onClick={() => setSelectedImage(qr.messqr)}
-                className="w-full px-4 py-2 bg-[#00a35c] text-white rounded-md hover:bg-[#29714a] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="w-24 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-[#29714a] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Select
+              </button>
+              <button
+                onClick={() => deleteQr(qr._id)}
+                className="ml-4 w-24 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              >
+                delete
               </button>
             </div>
           </div>
