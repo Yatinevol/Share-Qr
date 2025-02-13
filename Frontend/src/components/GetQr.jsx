@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { getAllQrs } from '../services/qr.js'
 import { getAllQrs as getQrCodes } from '../features/qrSlice.js'
 import {useDispatch, useSelector} from "react-redux"
+import {  deleteQr as removeQr } from '../services/qr.js'
 function GetQr() {
   const { qrCodes, currentPage, totalPages } = useSelector((state) => state.qr)
   const [selectedImage, setSelectedImage] = useState(null)
+  const [transfer, setTransfer]  = useState(null)
     const dispatch = useDispatch()
     const fetchQr = async()=>{
       try {
@@ -19,6 +21,16 @@ function GetQr() {
         console.log(error);
       }
     }
+    const deleteQr = async(file)=>{
+      await removeQr(file)
+      await fetchQr()
+      setSelectedImage(null)
+     
+   }
+   const valueDefined=(qr)=>{
+    setSelectedImage(qr.messqr)
+    setTransfer(qr._id)
+   }
     useEffect(()=>{
       fetchQr()
     },[])
@@ -54,7 +66,7 @@ function GetQr() {
             </p>
             <div className="mt-4">
               <button
-                onClick={() => setSelectedImage(qr.messqr)}
+                onClick={() => valueDefined(qr)}
                 className="w-full px-4 py-2 bg-[#00a35c] text-white rounded-md hover:bg-[#29714a] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Select
@@ -87,7 +99,7 @@ function GetQr() {
     </div>
 
     {/* Image Preview Modal */}
-    {selectedImage && (
+    {selectedImage  && (
       <div
         className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
         onClick={() => setSelectedImage(null)}
@@ -111,7 +123,9 @@ function GetQr() {
           </div>
           <div className="p-4 border-t flex justify-end">
             <button
-              onClick={() => setSelectedImage(null)}
+              onClick={() => (
+              deleteQr(transfer)
+              )}
               className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
             >
               Close

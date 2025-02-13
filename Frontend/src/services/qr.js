@@ -43,4 +43,14 @@ const deleteUserQr = async(fileName)=>{
     })
     return response.data
 }
-export {uploadUserFile, getAllQrs, getUserQr, deleteUserQr}
+
+const deleteQr = async(fileName)=>{
+    const token = localStorage.getItem("token")
+    const response = await axios.delete(`${base_url}/qr/v2/${fileName}`,{
+        headers : {
+            "Authorization" : `Bearer ${token}`
+        }
+    })
+    return response.data
+}
+export {uploadUserFile, getAllQrs, getUserQr, deleteUserQr, deleteQr}

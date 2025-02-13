@@ -107,4 +107,31 @@ const deleteUserQr = asyncHandler(async(req,res)=>{
     return res.status(200).json(new ApiResponse(200,{},"Your messqr deleted Successfully"))
 
 })
-export {uploadQr, getAllQr, getUserQr,deleteUserQr}
+const deleteQr = asyncHandler(async(req,res)=>{
+    const {messqrId} = req.params
+    console.log("messqrId:::",messqrId);
+    
+    if(!mongoose.Types.ObjectId.isValid(messqrId)) throw new ApiError(400,"messqr invalid id")
+    
+    const qr = await Qr.findById(messqrId)
+
+    if(!qr) {
+        throw new ApiError(404,"messqr not found")
+    }
+
+    if(qr.messqr){
+        try {
+            const fileName = extractFileName(qr.messqr);
+            console.log("fileName::::::",fileName);
+            await cloudinary.uploader.destroy(fileName)
+        } catch (error) {
+            console.error("Cloudinary Delete Error:", error);
+            throw new ApiError(500|| error,"bhai delete nhi ho pa rha :>")
+        }
+    }
+       
+    await Qr.findByIdAndDelete(messqrId)
+    return res.status(200).json(new ApiResponse(200,{},"Your messqr deleted Successfully"))
+
+})
+export {uploadQr, getAllQr, getUserQr,deleteUserQr, deleteQr}
