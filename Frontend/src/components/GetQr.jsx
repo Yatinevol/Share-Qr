@@ -11,7 +11,7 @@ function GetQr() {
     const fetchQr = async()=>{
       try {
         const response = await getAllQrs()
-      
+      console.log("floor",response.data.allQr);
         dispatch(getQrCodes({
           qrCodes : response.data.allQr,
           currentPage : response.data.pagination.currentPage,
@@ -64,10 +64,16 @@ function GetQr() {
             <p className="mt-4 text-sm text-gray-600">
               Created: {new Date(qr.createdAt).toLocaleDateString()}
             </p>
-            <div className="mt-4">
+            <div className="mt-4 ">
+              <span
+                
+                className="w-48 px-4 py-2 text-white font-medium mr-4 bg-red-500 rounded-4xl hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              >
+                {qr.floor}
+              </span>
               <button
                 onClick={() => valueDefined(qr)}
-                className="w-full px-4 py-2 bg-[#00a35c] text-white rounded-md hover:bg-[#29714a] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                className="w-48 px-4 py-2 bg-[#00a35c] text-white rounded-md hover:bg-[#29714a] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
               >
                 Select
               </button>

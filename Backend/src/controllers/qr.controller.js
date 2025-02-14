@@ -10,12 +10,11 @@ import { v2 as cloudinary } from 'cloudinary';
 const uploadQr =  asyncHandler(async (req, res)=>{
     
     const senderId = req.user._id
-    // console.log("uploadQr : req.user",req.user);
-    // console.log(req.file);
-    // console.log(req.file?.path);
     const messqrFilePath = req.file?.path
+    const floorTag = req.body.floorTag
+    console.log("floor:",floorTag);
     // console.log("path found: ", messqrFilePath);
-    if(!messqrFilePath){
+    if(!messqrFilePath || !floorTag){
         throw new ApiError(400,"Mess Qr is required")
     }
 
@@ -23,7 +22,8 @@ const uploadQr =  asyncHandler(async (req, res)=>{
         const resQr = await uploadOnCloudinary(messqrFilePath)
         const createdQr = await Qr.create({
             sendBy: senderId,
-            messqr: resQr.url
+            messqr: resQr.url,
+            floor : floorTag
         })
     
         return res.status(200).json( new ApiResponse(200,createdQr,"Qr uploaded successfully!"))

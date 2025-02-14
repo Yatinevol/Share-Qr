@@ -8,6 +8,11 @@ const qrSchema = new Schema({
     },
     messqr:{
         type:String
+    },
+    floor : {
+        type : String,
+        enum : ["ff", "gf"],
+        required : true
     }
 },{timestamps:true})
 
