@@ -45,7 +45,8 @@ function GetQr() {
     {/* QR List */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {qrCodes.map((qr) => (
-        <div
+                
+      <div
           key={qr._id}
           className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105"
         >
@@ -61,23 +62,27 @@ function GetQr() {
                 }}
               />
             </div>
-            <p className="mt-4 text-sm text-gray-600">
-              Created: {new Date(qr.createdAt).toLocaleDateString()}
-            </p>
-            <div className="mt-4 ">
-              <span
-                
-                className="w-48 px-4 py-2 text-white font-medium mr-4 bg-red-500 rounded-4xl hover:bg-red-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              >
+            <div className="flex items-center justify-between mt-4">
+            <div className="flex items-center gap-3">
+              <span className="px-3 py-1.5 text-sm font-medium text-white bg-[#8ECAE6] rounded-full">
                 {qr.floor}
               </span>
-              <button
-                onClick={() => valueDefined(qr)}
-                className="w-48 px-4 py-2 bg-[#00a35c] text-white rounded-md hover:bg-[#29714a] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-              >
-                Select
-              </button>
+              <span className="text-xs text-gray-500 font-medium">
+                {new Date(qr.createdAt).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric'
+                })}
+              </span>
             </div>
+            
+            <button 
+              onClick={() => valueDefined(qr)}
+              className="px-4 py-2 text-sm font-medium text-white bg-[#E95420] rounded-lg hover:bg-[#29714a] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#E95420] focus:ring-opacity-50 shadow-sm hover:shadow-md"
+            >
+              Select
+            </button>
+          </div>
           </div>
         </div>
       ))}

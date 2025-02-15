@@ -12,7 +12,7 @@ const uploadQr =  asyncHandler(async (req, res)=>{
     const senderId = req.user._id
     const messqrFilePath = req.file?.path
     const floorTag = req.body.floorTag
-    console.log("floor:",floorTag);
+    
     // console.log("path found: ", messqrFilePath);
     if(!messqrFilePath || !floorTag){
         throw new ApiError(400,"Mess Qr is required")
@@ -75,8 +75,6 @@ const getUserQr = asyncHandler(async(req,res)=>{
 
 const deleteUserQr = asyncHandler(async(req,res)=>{
     const {messqrId} = req.params
-    console.log("messqrId:::",messqrId);
-    console.log("user::::",req.user._id);
     if(!mongoose.Types.ObjectId.isValid(messqrId)) throw new ApiError(400,"messqr invalid id")
     
     const qr = await Qr.findById(messqrId)
@@ -84,15 +82,14 @@ const deleteUserQr = asyncHandler(async(req,res)=>{
     if(!qr) {
         throw new ApiError(404,"messqr not found")
     }
-    console.log("userrrr::::",qr.sendBy);
+
     if(qr.sendBy.toString() !== req.user._id.toString()){
         return res.status(401).json(new ApiResponse(404,"user not authorized"));
     }
-    console.log("messssss",qr.messqr);
+
     if(qr.messqr){
         try {
             const fileName = extractFileName(qr.messqr);
-            console.log("fileName::::::",fileName);
             // if(fileName){
             //    await uploadOnCloudinary.destroy(fileName)
             // }

@@ -43,9 +43,13 @@ function UserQr() {
                 }}
               />
             </div>
-            <p className="mt-4 text-sm text-gray-600">
-              Created: {new Date(qr.createdAt).toLocaleDateString()}
-            </p>
+          <span className="text-xs text-gray-500 font-medium">
+            {new Date(qr.createdAt).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            })}
+          </span>
             <div className="mt-4">
               <button
                 onClick={() => setSelectedImage(qr.messqr)}
