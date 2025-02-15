@@ -1,0 +1,25 @@
+{
+    "short_name": "QrSpark",
+    "name": "QrSpark",
+    "icons": [
+      {
+        "src": "../src/logo.png",
+        "sizes": "64x64",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "../src/logo.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "../src/logo.png",   
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }

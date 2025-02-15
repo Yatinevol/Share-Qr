@@ -32,83 +32,111 @@ function Login() {
         }
     }       
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8" style={{backgroundColor:"oklch(0.26 0.03 256.32)"}}>
-      <div className="max-w-5xl w-full bg-white rounded-xl shadow-lg overflow-hidden" >
-        <div className="flex flex-col md:flex-row">
-          {/* QR Code Image Section */}
-          <div className="md:w-1/2 bg-indigo-600">
-            <div className="h-full flex items-center justify-center p-6">
-              <img
-                src={image}
-                alt="QR Code Illustration"
-                width={400}
-                height={400}
-                className="max-w-full h-auto rounded-lg shadow-xl"
-              />
-              
-            </div>
-          </div>
-
-          {/* Login Form Section */}
-          <div className="md:w-1/2 p-8 space-y-8">
-            <div>
-              <div className="mb-6 flex justify-center">
-                <span className="inline-block w-20 h-20">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[oklch(0.26_0.03_256.32)]">
+    <div className="max-w-5xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl">
+      <div className="flex flex-col md:flex-row">
+        {/* Left side: Login Form */}
+        <div className="md:w-1/2 p-8 lg:p-12">
+          <div className="space-y-8">
+            {/* Logo and Header */}
+            <div className="text-center">
+              <div className="flex justify-center mb-8">
+                <div className="w-20 h-20 transform transition-transform duration-300 hover:scale-110">
                   <Logo width="100%" height="100%" />
-                </span>
+                </div>
               </div>
-              <h2 className="text-center text-3xl font-bold text-gray-900">Sign in to your account</h2>
-              <p className="mt-3 text-center text-sm text-gray-600">
-                Don&apos;t have any account?&nbsp;
+              <h2 className="text-3xl font-bold text-gray-900 tracking-tight">
+                Welcome back
+              </h2>
+              <p className="mt-3 text-sm text-gray-600">
+                Don't have an account?{' '}
                 <Link
-                  href="/signup"
-                  className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-200"
+                  to="/signup"
+                  className="font-semibold text-indigo-600 hover:text-indigo-500 transition-colors duration-200 underline-offset-2 hover:underline"
                 >
                   Sign Up
                 </Link>
               </p>
             </div>
-            {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
-            <form onSubmit={handleSubmit(login)} className="space-y-6">
-              <div className="space-y-4">
-                <Input
-                  label="Email: "
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  {...register("email", {
-                    required: true,
-                    validate: {
-                      matchPatern: (value) =>
-                        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                        "Email address must be a valid address",
-                    },
-                  })}
-                />
 
-                <Input
-                  label="Password"
-                  type="password"
-                  placeholder="Enter your Password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  {...register("password", {
-                    required: true,
-                  })}
-                />
+            {/* Error Message */}
+            {error && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-sm text-red-600 text-center font-medium">
+                  {error}
+                </p>
+              </div>
+            )}
+
+            {/* Login Form */}
+            <form onSubmit={handleSubmit(login)} className="space-y-6">
+              <div className="space-y-5">
+                {/* Email Input */}
+                <div className="space-y-2">
+                  <Input
+                    label="Email"
+                    type="email"
+                    placeholder="name@example.com"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400"
+                    {...register("email", {
+                      required: true,
+                      validate: {
+                        matchPatern: (value) =>
+                          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                          "Email address must be a valid address",
+                      },
+                    })}
+                  />
+                </div>
+
+                {/* Password Input */}
+                <div className="space-y-2">
+                  <Input
+                    label="Password"
+                    type="password"
+                    placeholder="Enter your password"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 placeholder:text-gray-400"
+                    {...register("password", {
+                      required: true,
+                    })}
+                  />
+                </div>
               </div>
 
+              {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200"
+                className="w-full py-3 px-4 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:translate-y-[-1px] active:translate-y-[1px]"
               >
-                Sign In
+                Sign in to your account
               </Button>
             </form>
+
+            {/* Optional: Additional Links */}
+            <div className="text-center">
+              <Link
+                to="/forgot-password"
+                className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200"
+              >
+                Forgot your password?
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Right side: Optional Decorative Panel */}
+        <div className="hidden md:block md:w-1/2 bg-gradient-to-br from-indigo-600 to-indigo-800 p-12">
+          <div className="h-full flex flex-col justify-center text-white space-y-6">
+            <h2 className="text-3xl font-bold">Welcome to Our Platform</h2>
+            <p className="text-indigo-100">
+              Sign in to access your account and continue your journey with us.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  )
+  </div>
+);
 }
 
 export default Login
