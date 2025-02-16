@@ -63,8 +63,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white h-8 mb-4">Connect With Me</h3>
             <div className="flex space-x-4 h-10">
               {[
-                { href: "https://twitter.com", icon: FaXTwitter, label: "Twitter" },
-                { href: "https://linkedin.com", icon: FaLinkedinIn, label: "LinkedIn" },
+                { href: "https://x.com/YatinSi36775440", icon: FaXTwitter, label: "Twitter" },
+                { href: "https://www.linkedin.com/in/yatin-singh-01110a24a/", icon: FaLinkedinIn, label: "LinkedIn" },
                 {
                   href : "https://github.com/Yatinevol",icon: FaGithub, label: "Github"
                 }
