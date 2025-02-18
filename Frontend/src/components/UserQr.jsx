@@ -6,7 +6,7 @@ function UserQr() {
     const fetchUserQr = async()=>{
         try {
             const response = await getUserQr()
-            console.log("hey hey qrCode:",response);
+            // console.log("hey hey qrCode:",response);
             if(response){
                 setQrCodes(response.data)
             }
