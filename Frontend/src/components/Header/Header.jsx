@@ -66,14 +66,14 @@ function Header() {
             ) : (
               <button
                 onClick={() => navigate("/signup")}
-                className="px-4 mx-2 py-2 bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200"
+                className="px-4 mx-2 py-2 bg-[#00a35c] font-semibold text-white rounded-full hover:bg-[#29714a] transition duration-200"
               >
                 Sign Up
               </button>
             )}
             {!authStatus && <button
                 onClick={() => navigate("/login")}
-                className="px-4 py-2 bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200"
+                className="px-4 py-2 bg-[#00a35c] font-semibold text-white rounded-full hover:bg-[#29714a] transition duration-200"
               >
                 Login
               </button>}
@@ -109,7 +109,7 @@ function Header() {
                     navigate("/signup");
                     setIsMenuOpen(false);
                   }}
-                  className="w-full px-4 py-2 bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200"
+                  className="w-full px-4 py-2 font-semibold bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200 "
                 >
                   Sign Up
                 </button>
@@ -120,7 +120,7 @@ function Header() {
                     navigate("/login");
                     setIsMenuOpen(false);
                   }}
-                  className="w-full px-4 py-2 bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200"
+                  className="w-full px-4 py-2 bg-[#00a35c] text-white rounded-full hover:bg-[#29714a] transition duration-200 font-semibold"
                 >
                   Login
                 </button>

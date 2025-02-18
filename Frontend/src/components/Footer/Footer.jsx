@@ -42,22 +42,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links - Fixed height container */}
-          <nav className="flex flex-col min-h-[160px]">
-            <h3 className="text-lg font-semibold text-white h-8 mb-4">Quick Links</h3>
-            <ul className="space-y-2 flex-1">
-              {[
-                { to: "/", text: "Home" },
-                { to: "/about", text: "About" },
-                { to: "/privacy", text: "Privacy Policy" }
-              ].map((link) => (
-                <li key={link.to} className="h-8">
-                  <FooterLink to={link.to}>{link.text}</FooterLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
           {/* Social Links - Fixed height container */}
           <div className="flex flex-col min-h-[160px]">
             <h3 className="text-lg font-semibold text-white h-8 mb-4">Connect With Me</h3>

@@ -73,7 +73,7 @@ const SignUp = async(data)=>{
                 required: true,
               })}
             />
-            <Button type="submit" className="w-full cursor-pointer">
+            <Button type="submit" className="w-full cursor-pointer text-sm font-semibold bg-indigo-600 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:translate-y-[-1px] active:translate-y-[1px]">
               Sign Up
             </Button>
           </div>
@@ -83,4 +83,4 @@ const SignUp = async(data)=>{
   )
 }
 
-export default SignUp
+export default SignUp 
