@@ -98,7 +98,6 @@ export default function Home() {
               <input
                 type="file"
                 className="hidden"
-                accept="image/png"
                 onChange={handleFileChange}
               />
             </label>
