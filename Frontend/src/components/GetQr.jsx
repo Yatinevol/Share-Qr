@@ -11,7 +11,7 @@ function GetQr() {
     const fetchQr = async()=>{
       try {
         const response = await getAllQrs()
-      // console.log("floor",response.data.allQr);
+      // console.log("floor",response.data.allQr);  
         dispatch(getQrCodes({
           qrCodes : response.data.allQr,
           currentPage : response.data.pagination.currentPage,
