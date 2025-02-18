@@ -36,7 +36,7 @@ export default function Home() {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-    if (selectedFile && selectedFile.type === 'image/png') {
+    if (selectedFile ) {
       setFile(selectedFile);
       setError('');
     } else {
