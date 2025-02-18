@@ -12,7 +12,10 @@ app.use(express.json({limit: "1mb"}))
 app.use(express.urlencoded({limit:"30kb",extended:true}))
 app.use(express.static("public"))
 app.use(cookieParser())
-
+app.use((req, res, next) => {
+    console.log(`Request received at: ${new Date().toISOString()}`);
+    next();
+  });
 
 //importing all the routers :
 import userRouter from "./routes/user.routes.js"

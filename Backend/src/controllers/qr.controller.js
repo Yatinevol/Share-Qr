@@ -131,4 +131,8 @@ const deleteQr = asyncHandler(async(req,res)=>{
     return res.status(200).json(new ApiResponse(200,{},"Your messqr deleted Successfully"))
 
 })
-export {uploadQr, getAllQr, getUserQr,deleteUserQr, deleteQr}
+
+const healthCheck = asyncHandler(async(req,res)=>{
+    res.status(200).json(new ApiResponse(200,{message:"Server is running"}))
+})
+export {uploadQr, getAllQr, getUserQr,deleteUserQr, deleteQr, healthCheck}
